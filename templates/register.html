@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">Register</h1>
+    {% if messages %}
+    <div id="alert-container">
+        {% for message in messages %}
+            {% if message.tags == "error" %}
+                <div class="alert alert-danger text-center fade show" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-success text-center fade show" role="alert">
+                    <i class="fas fa-check-circle"></i> {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<script>
+    // Hide alerts after 5 seconds
+    setTimeout(function() {
+        let alerts = document.querySelectorAll("#alert-container .alert");
+        alerts.forEach(alert => {
+            alert.classList.remove("show");
+            alert.classList.add("fade");
+            setTimeout(() => alert.style.display = "none", 1000); // Ensure smooth fade-out
+        });
+    }, 5000);
+</script>
+
+    <form action="{% url 'register' %}" method="POST" class="mx-auto w-50">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="User Name" required>
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Register</button>
+        <div>
+            <p class="text-center mt-3">Already you have an account <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
