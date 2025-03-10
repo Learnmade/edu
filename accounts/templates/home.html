@@ -245,26 +245,9 @@
   }
 </style>
 <body>
-  <header>
-    <nav>
-      <div class="logo">LearnMade 👾</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <div class="nav-icons">
-        <a href="#" title="Login"><i class="fas fa-sign-in-alt"></i> Login</a>
-        <a href="#" title="Signup"><i class="fas fa-user-plus"></i> Signup</a>
-      </div>
-      <div class="hamburger" onclick="toggleMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-    </nav>
-  </header>
+  
+    {% include "inc/navbar.html" %}
+  
 
   <main>
     <section class="hero">
@@ -288,10 +271,7 @@
       </div>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2023 LearnMade. All rights reserved.</p>
-  </footer>
+  {% include "inc/footer.html" %}
 
   <script>
     function toggleMenu() {

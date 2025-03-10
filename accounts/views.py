@@ -7,6 +7,7 @@ def home(request):
     return render(request, 'home.html')
 
 def login_user(request):
+    
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -15,7 +16,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Login successful!")
-            return redirect("home")  # Change to the page you want after login
+            return redirect("home") 
         else:
             messages.error(request, "Invalid username or password")
             return redirect("login")
@@ -42,3 +43,6 @@ def register_user(request):
         messages.info(request, "Account created successfully")
         return redirect('/register/')
     return render(request, 'register.html')
+
+
+
